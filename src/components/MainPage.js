@@ -1,4 +1,5 @@
 import React from 'react';
+import Comments from './Comments';
 import Posts from './Posts';
 
 
@@ -12,6 +13,7 @@ export default class MainPage extends React.Component {
         return (
             <div>
                 <Posts></Posts>
+                <Comments></Comments>
             </div>
         )
     }
