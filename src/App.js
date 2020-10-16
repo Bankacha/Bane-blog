@@ -3,7 +3,7 @@ import './App.css';
 // import JSONcomments from './resources/comments.json';
 // import JSONposts from './resources/posts.json';
 
-import MainPage from './components/MainPage';
+import MainPage from './pages/MainPage';
 import Layout from './layout/Layout'
 
 

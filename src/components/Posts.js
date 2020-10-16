@@ -44,9 +44,9 @@ export default class Posts extends React.Component {
                         {
                             this.getPostList().map((post, i) => {
                                 return (
-                                    <div>
-                                        <h5 key={i}>{post["title"]}</h5>
-                                        <p key={i} >{post["body"]}</p>
+                                    <div key={i}>
+                                        <h5 >{post["title"]}</h5>
+                                        <p >{post["body"]}</p>
                                     </div>
                                 )
                             })

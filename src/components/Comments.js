@@ -20,10 +20,10 @@ export default class Comments extends React.Component {
                 {
                     this.getCommentList().map((com, i) => {
                         return (
-                            <div>
-                                <p key={i}>{com['name']}</p>
-                                <p key={i}>{com['email']}</p>
-                                <p key={i}>{com['body']}</p>
+                            <div key={i}>
+                                <p >{com['name']}</p>
+                                <p >{com['email']}</p>
+                                <p >{com['body']}</p>
                             </div>
                         )
                     })

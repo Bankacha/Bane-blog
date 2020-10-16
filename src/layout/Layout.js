@@ -3,14 +3,18 @@ import { Container } from "react-bootstrap";
 import Header from './Header'
 
 
-export default function Layout(props) {
-    return (
-        <div>
-            <Header></Header>
-            <Container className="pt-5">
-                {props.children}
-            </Container>
-        </div>
-    )
+export default class Layout extends React.Component {
 
+
+    render() {
+        return (
+
+            <div>
+                <Header></Header>
+                <Container className="pt-5">
+                    {this.props.children}
+                </Container>
+            </div>
+        )
+    }
 }
