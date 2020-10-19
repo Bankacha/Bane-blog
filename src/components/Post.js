@@ -12,6 +12,7 @@ export default class Post extends React.Component {
     }
 
     render() {
+
         return (
             <Col md={6}>
                 <Card style={{ width: '100%' }}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Table, FormControl, Form, Row } from 'react-bootstrap';
+import { Button, Col, Table, FormControl, Row } from 'react-bootstrap';
 
 
 export default class PostPicker extends React.Component {
@@ -9,10 +9,12 @@ export default class PostPicker extends React.Component {
     }
 
 
+
+
     handleEvent = (event) => {
         const search = event.target.value;
         this.setState({
-            filtered: this.props.posts.filter((post, i) => post.title.includes(search))
+            filtered: this.props.posts.filter((post) => post.title.toLowerCase().includes(search.toLowerCase()))
         })
     }
 
@@ -23,6 +25,27 @@ export default class PostPicker extends React.Component {
     // }
 
     render() {
+
+        let rows = (
+            <tr>
+                <td className='text-center' colSpan={4}>There is no posts for this criteria.</td>
+            </tr>
+        );
+
+        if (this.state.filtered.length > 0) {
+            rows = this.state.filtered.map((post, i) => {
+                return (
+                    <tr key={i}>
+                        <td>{post.id}</td>
+                        <td>{post.title}</td>
+                        <td>{post.body}</td>
+                        <td> <Button onClick={() => this.props.onSelect(post.id)}>More</Button></td>
+                    </tr>
+                )
+            })
+        }
+
+
         return (
             <Col md={6}>
                 <Row className="mb-3">
@@ -40,24 +63,7 @@ export default class PostPicker extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            this.state.filtered.map((post, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <td>{post.id}</td>
-                                        <td>{post.title}</td>
-                                        <td>{post.body}</td>
-                                        <td> <Button onClick={() => this.props.onSelect(post.id)}>More</Button></td>
-                                    </tr>
-                                )
-                            })
-                        }
-
-                        {/* <tr>
-                            <td className='text-center' colSpan={4}>There is no posts for this criteria.</td>
-                        </tr> */}
-
-
+                        {rows}
                     </tbody>
                 </Table>
             </Col>
